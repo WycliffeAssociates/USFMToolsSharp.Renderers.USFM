@@ -2,10 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>@rbnswartz</Authors>
+    <Company>Wycliffe Associates</Company>
+    <Description>A renderer for USFM for USFMToolsSharp</Description>
+    <Copyright>2020 Wycliffe Associates</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</RepositoryUrl>
+    <AssemblyVersion>0.0.0.1</AssemblyVersion>
+    <Version>0.0.1</Version>
+    <FileVersion>0.0.0.1</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="USFMToolsSharp" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\USFMToolsSharp\USFMToolsSharp\USFMToolsSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

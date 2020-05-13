@@ -57,6 +57,7 @@ namespace USFMToolsSharp.Renderers.USFM
                     output.Append(textBlock.Text);
                     break;
                 case PMarker pMarker:
+                    output.AppendLine();
                     output.AppendLine("\\p");
                     foreach(var marker in input.Contents)
                     {
@@ -64,18 +65,20 @@ namespace USFMToolsSharp.Renderers.USFM
                     }
                     break;
                 case QMarker qMarker:
-                    output.Append($"\\q{qMarker.Depth}");
+                    output.Append($"\\q{qMarker.Depth} ");
                     foreach(var marker in input.Contents)
                     {
                         RenderMarker(marker, output);
                     }
                     break;
                 case ADDMarker aDDMarker:
-                    output.Append("\\add");
+                    output.Append("\\add ");
                     foreach(var marker in input.Contents)
                     {
                         RenderMarker(marker, output);
                     }
+                    break;
+                case ADDEndMarker _:
                     output.Append("\\add*");
                     break;
                 case BDMarker bDMarker:
