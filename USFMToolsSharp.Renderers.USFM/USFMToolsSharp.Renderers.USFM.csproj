@@ -16,11 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="USFMToolsSharp" Version="1.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\USFMToolsSharp\USFMToolsSharp\USFMToolsSharp.csproj" />
+    <PackageReference Include="USFMToolsSharp" Version="1.9.0" />
   </ItemGroup>
 
   <ItemGroup>
