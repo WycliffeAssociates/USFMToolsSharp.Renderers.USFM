@@ -9,9 +9,9 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</RepositoryUrl>
-    <AssemblyVersion>0.0.0.1</AssemblyVersion>
-    <Version>0.0.1</Version>
-    <FileVersion>0.0.0.1</FileVersion>
+    <AssemblyVersion>0.0.0.2</AssemblyVersion>
+    <Version>0.0.2</Version>
+    <FileVersion>0.0.0.2</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
