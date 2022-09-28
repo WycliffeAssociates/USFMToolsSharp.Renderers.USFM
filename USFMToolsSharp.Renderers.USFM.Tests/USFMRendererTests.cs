@@ -66,7 +66,7 @@ namespace USFMToolsSharp.Renderers.USFM.Tests
         {
             input.Contents.Add(new CMarker() { Number = 2, Contents = new List<Marker>() { new VMarker() { VerseNumber = "1" } } });
             var output = renderer.Render(input);
-            Assert.AreEqual($"\\c 2{newLine}\\v 1 ", output);
+            Assert.AreEqual($"\\c 2{newLine}\\v 1 {newLine}", output);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace USFMToolsSharp.Renderers.USFM.Tests
         {
             input.Contents.Add(new VMarker() { VerseNumber = "1", Contents = new List<Marker>() { new TextBlock("verse text") } });
             var output = renderer.Render(input);
-            Assert.AreEqual($"\\v 1 verse text", output);
+            Assert.AreEqual($"\\v 1 verse text{newLine}", output);
         }
 
         [TestMethod]
