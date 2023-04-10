@@ -40,19 +40,11 @@ namespace USFMToolsSharp.Renderers.USFM
                     output.AppendLine($"\\toc3 {tOC3Marker.BookAbbreviation}");
                     break;
                 case CMarker cMarker:
-                    output.AppendLine($"\\c {cMarker.Number}");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
+                    output.AppendLine($"\\c {cMarker.Number.ToString()}");
                     break;
                 case VMarker vMarker:
-                    output.Append($"\\v {vMarker.VerseNumber} ");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
                     output.AppendLine();
+                    output.Append($"\\v {vMarker.VerseNumber} ");
                     break;
                 case TextBlock textBlock:
                     output.Append(textBlock.Text);
@@ -60,43 +52,21 @@ namespace USFMToolsSharp.Renderers.USFM
                 case PMarker pMarker:
                     output.AppendLine();
                     output.AppendLine("\\p");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
                     break;
                 case QMarker qMarker:
-                    output.Append($"\\q{qMarker.Depth} ");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
+                    output.Append($"\\q{qMarker.Depth.ToString()} ");
                     break;
                 case ADDMarker aDDMarker:
                     output.Append("\\add ");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
                     break;
                 case ADDEndMarker _:
-                    output.Append("\\add*");
+                    output.Append("\\add* ");
                     break;
                 case BDMarker bDMarker:
-                    output.Append("\\bd");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
-                    output.Append("\\bd*");
+                    output.Append("\\bd ");
                     break;
                 case BDITMarker bDITMarker:
-                    output.Append("\\bdit");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
-                    output.Append("\\bdit*");
+                    output.Append("\\bdit ");
                     break;
                 case BKMarker bKMarker:
                     output.Append($"\\bd {bKMarker.BookTitle} \\bd*");
@@ -112,10 +82,6 @@ namespace USFMToolsSharp.Renderers.USFM
                     break;
                 case CLSMarker cLSMarker:
                     output.AppendLine("\\cls");
-                    foreach(var marker in input.Contents)
-                    {
-                        RenderMarker(marker, output);
-                    }
                     break;
                 case IDEMarker iDEMarker:
                     output.AppendLine($"\\ide {iDEMarker.Encoding}");
@@ -126,9 +92,108 @@ namespace USFMToolsSharp.Renderers.USFM
                 case MTMarker mTMarker:
                     output.AppendLine($"\\mt {mTMarker.Title}");
                     break;
+                case SMarker sMarker:
+                    output.AppendLine($"\\s{(sMarker.Weight == 1 ? "" : sMarker.Weight.ToString())}");
+                    break;
+                case BMarker bMarker:
+                    output.Append("\\b ");
+                    break;
+                case LIMarker lIMarker:
+                    output.AppendLine($"\\li{((lIMarker.Depth == 1) ? "" : lIMarker.Depth.ToString())} ");
+                    break;
+                case FEndMarker _:
+                    output.Append("\\f* ");
+                    break;
+                case FREndMarker _:
+                    output.Append("\\fr* ");
+                    break;
+                case FRMarker fRMarker:
+                    output.Append($"\\fr {fRMarker.VerseReference}");
+                    break;
+                case FTMarker _:
+                    output.Append($"\\ft ");
+                    break;
+                case XTMarker xTMarker:
+                    output.Append($"\\xt ");
+                    break;
+                case PMOMarker pMOMarker:
+                    output.AppendLine($"\\pmo ");
+                    break;
+                case PMMarker pMMarker:
+                    output.AppendLine($"\\pm ");
+                    break;
+                case MIMarker mIMarker:
+                    output.AppendLine($"\\mi ");
+                    break;
+                case PIMarker pIMarker:
+                    output.AppendLine($"\\pi ");
+                    break;
+                case LHMarker lHMarker:
+                    output.AppendLine($"\\lh ");
+                    break;
+                case FMarker fMarker:
+                    output.Append($"\\f {fMarker.FootNoteCaller} ");
+                    break;
+                case LFMarker lFMarker:
+                    output.AppendLine($"\\lf ");
+                    break;
+                case MMarker mMarker:
+                    output.AppendLine($"\\m ");
+                    break;
+                case LITLMarker lITLMarker:
+                    output.Append($"\\litl ");
+                    break;
+                case LITLEndMarker _:
+                    output.Append($"\\litl* ");
+                    break;
+                case PCMarker pCMarker:
+                    output.AppendLine($"\\pc ");
+                    break;
+                case MSMarker mSMarker:
+                    output.AppendLine($"\\ms{(mSMarker.Weight == 1 ? "" : mSMarker.Weight.ToString())} {mSMarker.Heading}");
+                    break;
+                case DMarker dMarker:
+                    output.AppendLine($"\\d {dMarker.Description}");
+                    break;
+                case SPMarker sPMarker:
+                    output.AppendLine($"\\sp {sPMarker.Speaker}");
+                    break;
+                case TableBlock _:
+                    break;
+                case MRMarker mRMarker:
+                    output.AppendLine($"\\mr{(mRMarker.Weight ==1 ? "" : mRMarker.Weight.ToString())} {mRMarker.SectionReference}");
+                    break;
+                case BDEndMarker _:
+                    output.Append("\\bd* ");
+                    break;
+                case BDITEndMarker _:
+                    output.Append("\\bdit* ");
+                    break;
+                case TRMarker _:
+                    output.AppendLine($"\\tr ");
+                    break;
+                case TCMarker _:
+                    output.AppendLine($"\\tc ");
+                    break;
+                case THMarker _:
+                    output.AppendLine($"\\th ");
+                    break;
+                case XMarker xMarker:
+                    output.Append($"\\x {xMarker.CrossRefCaller} ");
+                    break;
+                case XOMarker xoMarker:
+                    output.Append($"\\xo {xoMarker.OriginRef} ");
+                    break;
+                case XQMarker xqMarker:
+                    output.Append($"\\xq ");
+                    break;
                 default:
                     UnrenderableMarkers.Add(input.Identifier);
                     break;
+            }
+            foreach(var marker in input.Contents)
+            {
+                RenderMarker(marker, output);
             }
         }
     }
