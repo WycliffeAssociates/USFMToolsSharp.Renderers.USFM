@@ -52,7 +52,7 @@ namespace USFMToolsSharp.Renderers.USFM
                     {
                         RenderMarker(marker, output);
                     }
-                    output.AppendLine();
+                    output.Append("\n");
                     break;
                 case TextBlock textBlock:
                     output.Append(textBlock.Text);
