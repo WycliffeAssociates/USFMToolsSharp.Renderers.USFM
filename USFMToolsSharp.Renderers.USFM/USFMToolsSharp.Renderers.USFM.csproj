@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Authors>@rbnswartz</Authors>
     <Company>Wycliffe Associates</Company>
     <Description>A renderer for USFM for USFMToolsSharp</Description>
@@ -9,14 +9,14 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</RepositoryUrl>
-    <AssemblyVersion>0.0.0.2</AssemblyVersion>
-    <Version>0.0.2</Version>
-    <FileVersion>0.0.0.2</FileVersion>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <Version>0.1.0</Version>
+    <FileVersion>0.1.0.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="USFMToolsSharp" Version="1.9.0" />
+    <PackageReference Include="USFMToolsSharp" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
