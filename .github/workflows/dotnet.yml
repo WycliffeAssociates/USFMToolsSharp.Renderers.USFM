@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 10.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -26,7 +26,7 @@ jobs:
     - name: Push to Nuget if tagged
       if: contains( github.ref, 'refs/tags/v' )
       run:  |
-        cd ./USFMToolsSharp.Renderers.Docx/bin/Release/ && \
+        cd ./USFMToolsSharp.Renderers.USFM/bin/Release/ && \
         PKG_NAME=$(ls *.nupkg) && \
         dotnet nuget push $PKG_NAME -k $NUGET_TOKEN -s https://api.nuget.org/v3/index.json
       env:

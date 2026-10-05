@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using USFMToolsSharp.Models;
 using USFMToolsSharp.Models.Markers;
 
 namespace USFMToolsSharp.Renderers.USFM
 {
     public class USFMRenderer
     {
+        private const int DefaultHierarchyIndex = 0;
+
         public List<string> UnrenderableMarkers;
 
         public USFMRenderer()
@@ -16,16 +19,20 @@ namespace USFMToolsSharp.Renderers.USFM
         public string Render(USFMDocument input)
         {
             StringBuilder output = new StringBuilder();
-            foreach(var marker in input.Contents)
+            if (input.Hierarchies.Count == 0)
+            {
+                return output.ToString();
+            }
+            foreach(var marker in input.Hierarchies[DefaultHierarchyIndex].Contents)
             {
                 RenderMarker(marker, output);
             }
             return output.ToString();
         }
 
-        private void RenderMarker(Marker input, StringBuilder output)
+        private void RenderMarker(HierarchyNode input, StringBuilder output)
         {
-            switch (input)
+            switch (input.Marker)
             {
                 case IDMarker iDMarker:
                     output.AppendLine($"\\id {iDMarker.TextIdentifier}");
@@ -127,7 +134,7 @@ namespace USFMToolsSharp.Renderers.USFM
                     output.AppendLine($"\\mt {mTMarker.Title}");
                     break;
                 default:
-                    UnrenderableMarkers.Add(input.Identifier);
+                    UnrenderableMarkers.Add(input.Marker.Identifier);
                     break;
             }
         }
