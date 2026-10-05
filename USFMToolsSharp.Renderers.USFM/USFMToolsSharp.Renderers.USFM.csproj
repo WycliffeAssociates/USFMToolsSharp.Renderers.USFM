@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WycliffeAssociates/USFMToolsSharp.Renderers.USFM</RepositoryUrl>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <FileVersion>0.1.0.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
